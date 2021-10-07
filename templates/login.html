@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7 col-sm-9">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">ログインする</h3>
+
+                        <main class="form-signin">
+                            <form method="POST">{% csrf_token %}
+                              <label for="inputEmail" class="visually-hidden">メールアドレス</label>
+                              <input type="" id="inputEmail" class="form-control" placeholder="email" name="email" required autofocus>
+                              <label for="inputPassword" class="visually-hidden">パスワード</label>
+                              <input type="password" id="inputPassword" class="form-control" placeholder="パスワード" name="password" required>
+                              <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン</button>
+                            </form>
+                        </main>
+              </div>
+              <div class="card-footer text-muted text-center">
+                  <a href="{% url 'signup' %}">サインアップ</a>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
