@@ -9,5 +9,6 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('signup', SignUpView.as_view(), name='signup'),
     #path('top/', topfunc, name='top'),
+    path('',login_view)
 
 ]
