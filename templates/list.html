@@ -29,7 +29,7 @@
                         <td>　</td>
                     {% else %}
                         <td>{{ food.quantity }}</td>
-                        <td><a href="{% url 'minus' food.pk %}" method="POST"　button type="button"　class="btn btn-primary">{% csrf_token %}-</a></td>
+                        <td><a href="{% url 'minus' food.pk %}" button type="button"　class="btn btn-primary" method="POST">{% csrf_token %}-</a></td>
                     {% endif %}
                     <td><a href="{% url 'delete' food.pk %}" button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal" >削除</a></td>                    
                 </tr>
