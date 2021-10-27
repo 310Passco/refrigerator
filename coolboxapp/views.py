@@ -40,6 +40,7 @@ def count_minus(request,pk):
 
 class Food_Delete(DeleteView):
     model = Food
+    template_name = 'delete.html'
     success_url = reverse_lazy('list')
 
 def login_view(request):
