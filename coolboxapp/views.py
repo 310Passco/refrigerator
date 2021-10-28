@@ -17,7 +17,7 @@ class FoodCreate(CreateView):
         return super(FoodCreate, self).form_valid(form)
     
 
-def topfunc(request):
+def top_view(request):
   return render(request, 'top.html')
 
 
@@ -79,3 +79,5 @@ class SignUpView(CreateView):
         login(self.request, user)
         self.object = user
         return redirect('list')
+
+
