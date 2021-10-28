@@ -130,3 +130,5 @@ AUTH_USER_MODEL = 'coolboxapp.CustomUser'
 LOGIN_REDIRECT_URL = '/list'
 
 STATICFILES_DIRS = [str(BASE_DIR / 'static'),]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
