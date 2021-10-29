@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-czm9!*+1wc1s(sb0rio3-ephpi9-l4*g2=7sp0m2a_n4=yk^k9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["show-me-kigen.com","127.0.0.1"]
 
 
 # Application definition
@@ -131,6 +131,7 @@ AUTH_USER_MODEL = 'coolboxapp.CustomUser'
 LOGIN_REDIRECT_URL = '/list'
 
 
-STATIC_ROOT = BASE_DIR / '/staticfile/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-STATICFILES_DIRS = [str(BASE_DIR / 'static')]
+
+
