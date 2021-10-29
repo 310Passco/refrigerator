@@ -135,3 +135,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 
 
+if DEBUG:
+    SECURE_SSL_REDIRECT = False
+else:
+    SECURE_SSL_REDIRECT = True
