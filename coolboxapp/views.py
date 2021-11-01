@@ -21,7 +21,7 @@ def top_view(request):
   return render(request, 'top.html')
 
 
-#@login_required
+@login_required
 def list_view(request):
   user_food = Food.objects.filter(owner=request.user)
   user_food = user_food.order_by('deadline').reverse
@@ -44,14 +44,15 @@ class Food_Delete(DeleteView):
     success_url = reverse_lazy('list')
 
 def login_view(request):
-    email = request.POST.get('email')
-    password = request.POST.get('password')
-    user = authenticate(request, email=email, password=password)
-    if user is not None:
-        login(request, user)
-        return redirect('list')
-    else:
-        return render(request, 'login.html', {'context':'ログインに失敗しました'})
+    if request.method == "POST"
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('list')
+        else:
+            return render(request, 'login.html', {'context':'ログインに失敗しました'})
     return render(request, 'login.html')
 
 def logout_view(request):
@@ -59,15 +60,16 @@ def logout_view(request):
     return redirect('login')
 
 class SignUpView(CreateView):
-    def post(self, request, *args, **kwargs):
-        form = SignUpForm(data=request.POST)
-        if form.is_valid():
-            form.save()
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(email=email, password=password)
-            login(request, user)
-            return redirect('list')
+    if request.method == "POST"
+        def post(self, request, *args, **kwargs):
+            form = SignUpForm(data=request.POST)
+            if form.is_valid():
+                form.save()
+                email = form.cleaned_data.get('email')
+                password = form.cleaned_data.get('password1')
+                user = authenticate(email=email, password=password)
+                login(request, user)
+                return redirect('list')
         return render(request, 'signup.html', {'form': form})
 
     def get(self, request, *args, **kwargs):
