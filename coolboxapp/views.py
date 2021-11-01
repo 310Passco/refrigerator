@@ -44,7 +44,7 @@ class Food_Delete(DeleteView):
     success_url = reverse_lazy('list')
 
 def login_view(request):
-    if request.method == "POST"
+    if request.method == "POST":
         email = request.POST.get('email')
         password = request.POST.get('password')
         user = authenticate(request, email=email, password=password)
@@ -60,16 +60,15 @@ def logout_view(request):
     return redirect('login')
 
 class SignUpView(CreateView):
-    if request.method == "POST"
-        def post(self, request, *args, **kwargs):
-            form = SignUpForm(data=request.POST)
-            if form.is_valid():
-                form.save()
-                email = form.cleaned_data.get('email')
-                password = form.cleaned_data.get('password1')
-                user = authenticate(email=email, password=password)
-                login(request, user)
-                return redirect('list')
+    def post(self, request, *args, **kwargs):
+        form = SignUpForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(email=email, password=password)
+            login(request, user)
+            return redirect('list')
         return render(request, 'signup.html', {'form': form})
 
     def get(self, request, *args, **kwargs):

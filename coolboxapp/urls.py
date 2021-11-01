@@ -7,7 +7,7 @@ urlpatterns = [
     path('minus/<int:pk>', count_minus, name='minus'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
-    path('signup', SignUpView.as_view(), name='signup'),
+    path('signup/', SignUpView.as_view(), name='signup'),
     path('', top_view, name='top'),
 
 ]
