@@ -18,7 +18,8 @@ def foodCreate(request):
     else:
         getuser = CustomUser.objects.get(pk=request.user.pk)
         form = FoodForm()
-        return render(request,'create.html',{'getuser':getuser})
+        context = {'user':getuser}
+        return render(request,'create.html',context)
     
 
 def top_view(request):
