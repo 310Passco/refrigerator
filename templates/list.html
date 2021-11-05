@@ -20,20 +20,24 @@
             </tr>
         </thead>
         <tbody>
-            {% for food in foods %}            
-                <tr>
-                    <td>{{ food.name }}</td>
-                    <td>{{ food.deadline }}</td>
-                    {%if food.quantity == None %}
-                        <td>　</td>
-                        <td>　</td>
-                    {% else %}
-                        <td>{{ food.quantity }}</td>
-                        <td><a href="{% url 'minus' food.pk %}" button type="button"　class="btn btn-primary" method="POST">{% csrf_token %}減らす</a></td>
-                    {% endif %}
-                    <td><a href="{% url 'delete' food.pk %}" button type="button" class="btn btn-primary">削除</a></td>                    
-                </tr>
-            {% endfor %}
+            {% if foods= == None %}
+
+            {% else %}
+                {% for food in foods %}            
+                    <tr>
+                        <td>{{ food.name }}</td>
+                        <td>{{ food.deadline }}</td>
+                        {%if food.quantity == None %}
+                            <td>　</td>
+                            <td>　</td>
+                        {% else %}
+                            <td>{{ food.quantity }}</td>
+                            <td><a href="{% url 'minus' food.pk %}" button type="button"　class="btn btn-primary" method="POST">{% csrf_token %}減らす</a></td>
+                        {% endif %}
+                        <td><a href="{% url 'delete' food.pk %}" button type="button" class="btn btn-primary">削除</a></td>                    
+                    </tr>
+                {% endfor %}
+            {% endif %}
         </tbody>   
     </table>
 </div>
