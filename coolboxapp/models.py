@@ -42,7 +42,7 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = []
 
 class Food(models.Model):
-    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
+    owner = models.CharField(max_length=250)
     name = models.CharField(max_length=250)
     deadline = models.DateField(null=True)
     quantity = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1,'最小値は1です'), MaxValueValidator(100,'最大値は100です')])

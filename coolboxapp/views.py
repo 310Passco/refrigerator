@@ -6,15 +6,19 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView
-class FoodCreate(CreateView):
-    model = Food
-    template_name = 'create.html'
-    form_class = FoodForm
-    success_url = reverse_lazy('list')
-    
-    def form_valid(self, form):
-        form.instance.owner = self.request.user
-        return super(FoodCreate, self).form_valid(form)
+
+
+def foodCreate(request):
+    if request.method == 'POST':
+        form = FoodForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('list')
+        return render(request,'create.html',{'form':form})
+    else:
+        default_data = {'owner':CustomUser.objects.get(pk=request.user.pk)}
+        form = FoodForm(default_data)
+        return render(request,'create.html',{'form':form})
     
 
 def top_view(request):

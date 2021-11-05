@@ -20,7 +20,8 @@ class FoodForm(ModelForm):
 
     class Meta:
         model = Food
-        fields = ('name', 'deadline', 'quantity')
+        fields = ('name', 'deadline', 'quantity','owner')
+        widgets = {'owner':forms.HiddenInput()}
 
 class SignUpForm(UserCreationForm):
 
