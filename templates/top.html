@@ -7,10 +7,17 @@
     </nav>
 </header>
 
-<div class="position-absolute top-50 start-50">
-    <h1>Show me 期限へようこそ！</h1>
-    <p class="lead">Show me 期限は食材やお菓子などの賞味期限を簡単に管理することができるサイトです。</p>
-    <p class="lead">賞味期限のほかに食べ物の数量を追加することもできるので、Show me 期限を使えば卵を買い忘れることは一生ありません！</p>
-    <a href="{% url 'signup' %}" class="btn btn-lg btn-info">ユーザー登録する</a>
+<div class="container">
+    <div class="row justify-content-center">
+        <h1>Show me 期限へようこそ！</h1>
+        <p class="lead">Show me 期限は食材やお菓子などの賞味期限を簡単に管理することができるサイトです。</p>
+        <p class="lead">賞味期限のほかに食べ物の数量を追加することもできるので、Show me 期限を使えば卵を買い忘れることは一生ありません！</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <a href="{% url 'signup' %}" class="btn btn-lg btn-info">ユーザー登録する</a>
+    </div>
 </div>
 {% endblock content %}
