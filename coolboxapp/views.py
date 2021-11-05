@@ -58,7 +58,7 @@ def login_view(request):
             login(request, user)
             return redirect('list')
         else:
-            return render(request, 'login.html', {'context':'ログインに失敗しました'})
+            return render(request, 'login.html')
     return render(request, 'login.html')
 
 def logout_view(request):
