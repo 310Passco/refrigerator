@@ -1,8 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser, Food
 from django.forms import ModelForm
-from django import forms
-
 
 class CustomUserCreationForm(UserCreationForm):
 
@@ -22,7 +20,6 @@ class FoodForm(ModelForm):
     class Meta:
         model = Food
         fields = ('name', 'deadline', 'quantity','owner')
-        widgets = {'owner':forms.HiddenInput()}
 
 class SignUpForm(UserCreationForm):
 

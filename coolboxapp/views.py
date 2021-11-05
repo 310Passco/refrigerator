@@ -14,11 +14,11 @@ def foodCreate(request):
         if form.is_valid():
             form.save()
             return redirect('list')
-        return render(request,'create.html',{'form':form})
+        return render(request,'create.html')
     else:
-        default_data = {'owner':CustomUser.objects.get(pk=request.user.pk)}
-        form = FoodForm(default_data)
-        return render(request,'create.html',{'form':form})
+        getuser = CustomUser.objects.get(pk=request.user.pk)
+        form = FoodForm()
+        return render(request,'create.html',{'getuser':getuser})
     
 
 def top_view(request):
@@ -27,10 +27,11 @@ def top_view(request):
 
 @login_required
 def list_view(request):
-  user_food = Food.objects.filter(owner=request.user)
-  user_food = user_food.order_by('deadline').reverse
-  context = {'foods': user_food}
-  return render(request, 'list.html', context)
+      getuser = CustomUser.objects.get(pk=request.user.pk)
+      user_food = Food.objects.filter(owner=getuser)
+      user_food = user_food.order_by('deadline').reverse
+      context = {'foods': user_food}
+      return render(request, 'list.html', context)
 
 def count_minus(request,pk):
     object = Food.objects.get(pk=pk)
